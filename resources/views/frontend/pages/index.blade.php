@@ -96,7 +96,7 @@
                          <div class="row">
                             <div class="col-md-12 text-center">
 
-                                <h6>Hizmeti almak için arayın</h6>
+                                <h6>Hizmeti almak için arayın deneme</h6>
                             </div>
                         </div>
 
