@@ -12,5 +12,7 @@ Security is handled with three chained security groups: the ALB accepts traffic 
 To deploy, the commands terraform init, terraform plan, and terraform apply are run in order. Sensitive values such as the database password are kept in a terraform.tfvars file, which is not pushed to the repo
 ## CI/CD
 To automate the deployment process, we set up a CI/CD pipeline with GitHub Actions. On every code push to the main branch, the pipeline runs automatically: it builds the Docker image, pushes it to ECR, and then triggers an instance refresh on the Auto Scaling Group so the EC2 instances are updated with the new image. This way, code changes go live without any manual steps. The AWS access keys are stored securely in GitHub Secrets instead of being hardcoded
+
+Instead of keeping the Terraform state in a local file, I configured a remote backend. The state is stored in an S3 bucket, and DynamoDB is used for state locking so the state can be shared safely across a team.
 <img width="1887" height="946" alt="Ekran görüntüsü 2026-05-30 161812" src="https://github.com/user-attachments/assets/e9e434b2-222b-4afd-9d44-ae5e5357374b" />
 <img width="1889" height="956" alt="Ekran görüntüsü 2026-05-30 161526" src="https://github.com/user-attachments/assets/00ce7859-b232-44a4-ba90-8151d0ef5e4c" />
